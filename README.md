@@ -1,24 +1,22 @@
 # Microsoft Enterprise SOC
 
-Controlled Microsoft SOC laboratory demonstrating endpoint telemetry,
-detection engineering, investigation, threat hunting, incident response,
-and security automation.
+A simulated Microsoft SOC environment demonstrating endpoint telemetry, KQL detection engineering, investigation, threat hunting, incident response and Sentinel automation.
 
 ## Objective
 
 Build and document a small Microsoft-based SOC environment using:
 
-- Microsoft Sentinel
-- Microsoft Defender
-- Microsoft Entra ID
-- KQL
-- Sysmon
-- Windows
-- Microsoft 365
-- Threat Intelligence
-- MITRE ATT&CK
-- Incident Response
-- Sentinel automation
+* Microsoft Sentinel
+* Microsoft Defender
+* Microsoft Entra ID
+* KQL
+* Sysmon
+* Windows
+* Microsoft 365
+* Threat Intelligence
+* MITRE ATT&CK
+* Incident Response
+* Sentinel automation
 
 ## Environment
 
