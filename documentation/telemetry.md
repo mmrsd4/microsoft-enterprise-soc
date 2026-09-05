@@ -76,5 +76,89 @@ volume will be reviewed before forwarding telemetry to Microsoft
 
 Sentinel.
 
+## Microsoft Defender Antivirus
+
+
+
+Microsoft Defender Antivirus is enabled on WIN-SOC01 and provides
+
+the endpoint protection layer for the Windows laboratory system.
+
+
+
+\### Validated Configuration
+
+
+
+The following Defender components were checked:
+
+
+
+\* Antivirus service
+
+\* Real-time protection
+
+\* Behavior monitoring
+
+\* Network Inspection System
+
+\* IOAV protection
+
+
+
+\### Defender for Endpoint Status
+
+
+
+The Defender for Endpoint Sense service and executable are present
+
+on WIN-SOC01. However, Defender for Endpoint onboarding could not
+
+be verified because the Microsoft Defender portal was temporarily
+
+inaccessible during implementation.
+
+
+
+The local MDE status registry location did not contain onboarding
+
+status information, and the SENSE operational logs contained no
+
+events.
+
+
+
+Therefore, the project does not claim successful Defender for
+
+Endpoint onboarding.
+
+
+
+\### Current Telemetry
+
+
+
+The current validated endpoint telemetry consists of:
+
+
+
+\* Sysmon telemetry
+
+\* Windows Defender Antivirus telemetry
+
+\* Windows Defender Operational events, where available
+
+
+
+\### Limitation
+
+
+
+Defender for Endpoint cloud onboarding remains pending and will be
+
+validated separately when Microsoft Defender portal access is
+
+available.
+
 
 
