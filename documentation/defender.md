@@ -6,9 +6,11 @@
 
 
 
-Microsoft Defender Antivirus provides endpoint protection on
+Microsoft Defender Antivirus is used as the endpoint protection layer for WIN-SOC01.
 
-WIN-SOC01.
+
+
+The purpose of this phase was to validate the local Defender configuration and confirm that Windows Defender Operational telemetry is available for later SOC monitoring.
 
 
 
@@ -34,35 +36,7 @@ WIN-SOC01.
 
 | IOAV Protection      | Enabled        |
 
-
-
-\## Defender for Endpoint
-
-
-
-The Microsoft Defender for Endpoint Sense component is present on
-
-the endpoint.
-
-
-
-Current state:
-
-
-
-\* Sense executable: present
-
-\* Sense service: stopped
-
-\* SENSE telemetry: no events
-
-\* MDE onboarding: not verified
-
-
-
-The Defender portal was temporarily inaccessible during
-
-implementation, so successful cloud onboarding is not claimed.
+| Script Scanning      | Enabled        |
 
 
 
@@ -70,13 +44,89 @@ implementation, so successful cloud onboarding is not claimed.
 
 
 
-Defender configuration was validated using PowerShell.
+Defender status was checked using `Get-MpComputerStatus`.
 
 
 
-Windows Defender Operational events and threat history were checked
+The following protection components were confirmed as enabled:
 
-to determine whether endpoint security telemetry was available.
+
+
+\* Microsoft Defender Antivirus
+
+\* Real-time protection
+
+\* Behavior monitoring
+
+\* Network Inspection System
+
+\* IOAV protection
+
+\* Script scanning
+
+
+
+The Windows Defender Operational event log was also reviewed.
+
+
+
+Observed event types included:
+
+
+
+\* Event ID 1150 — Defender client health
+
+\* Event ID 1151 — Endpoint protection health report
+
+\* Event ID 1000 — Scan started
+
+\* Event ID 1001 — Scan completed
+
+\* Event ID 1002 — Scan stopped before completion
+
+\* Event ID 2000 — Security intelligence update
+
+\* Event ID 5007 — Defender configuration change
+
+
+
+\## Configuration Change Investigation
+
+
+
+Several Event ID 5007 records were observed.
+
+
+
+The detailed event data showed changes to Defender internal configuration values, including `ToastOrSsoTrigger`, `WdConfigHash`, and internal feature-control values.
+
+
+
+These events were not treated as malicious based only on the generic Event ID 5007 message. The actual old and new values were inspected before drawing a conclusion.
+
+
+
+No Defender threat detections were present when `Get-MpThreatDetection` and `Get-MpThreat` were checked.
+
+
+
+\## Defender for Endpoint Status
+
+
+
+The Defender for Endpoint `Sense` service and `MsSense.exe` executable were present on WIN-SOC01.
+
+
+
+However, Defender for Endpoint onboarding could not be verified during implementation because access to the Defender portal was unavailable.
+
+
+
+The `Sense` service was stopped and the SENSE operational logs contained no events.
+
+
+
+Therefore, Defender for Endpoint onboarding is not claimed as successfully implemented in this laboratory.
 
 
 
@@ -84,17 +134,31 @@ to determine whether endpoint security telemetry was available.
 
 
 
-Defender for Endpoint cloud functionality depends on the available
-
-Microsoft licensing, tenant configuration and successful endpoint
-
-onboarding.
+This phase validates Microsoft Defender Antivirus locally.
 
 
 
-The project documents only functionality that was actually
+Defender for Endpoint functionality was not confirmed because the required portal access/onboarding could not be completed during implementation.
 
-validated.
+
+
+No production Defender environment was used.
+
+
+
+No real malware was introduced into the laboratory.
+
+
+
+\## SOC Relevance
+
+
+
+The Defender telemetry provides endpoint security information that can later be correlated with Sysmon and other Microsoft security telemetry.
+
+
+
+The configuration-change investigation also demonstrates that an analyst should inspect the actual event data rather than automatically treating every Defender configuration-change event as malicious.
 
 
 

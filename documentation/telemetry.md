@@ -76,6 +76,28 @@ volume will be reviewed before forwarding telemetry to Microsoft
 
 Sentinel.
 
+
+## Microsoft Defender Telemetry
+
+Microsoft Defender Antivirus was validated on WIN-SOC01 as the endpoint protection layer.
+
+The endpoint generated Defender Operational events covering:
+
+| Event ID | Activity             | SOC Use                      |
+| -------- | -------------------- | ---------------------------- |
+| 1000     | Scan started         | Scan activity                |
+| 1001     | Scan completed       | Scan status                  |
+| 1002     | Scan stopped         | Investigate incomplete scans |
+| 1150     | Defender health      | Endpoint health              |
+| 1151     | Health report        | Endpoint status              |
+| 2000     | Intelligence update  | Protection currency          |
+| 5007     | Configuration change | Configuration investigation  |
+
+Defender status was confirmed using PowerShell.
+
+Defender for Endpoint onboarding was not successfully verified during this phase because the Defender portal was unavailable. The Sense service and executable were present, but no SENSE operational events were generated.
+
+
 ## Microsoft Defender Antivirus
 
 
